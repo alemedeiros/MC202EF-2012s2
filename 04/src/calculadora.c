@@ -161,7 +161,6 @@ Polinomio CalcExpr(char* expr)
 
           /* Desempilha os operandos. */
           op2 = VerificaDesempilha(&duracell);
-
           op1 = VerificaDesempilha(&duracell);
 
           if (op1 == NULL || op2 == NULL)
@@ -178,12 +177,12 @@ Polinomio CalcExpr(char* expr)
           /* Libera a memoria dinâmica necessária. */
           if (op1->temp)
             LiberaPolinomio(op1->poli);
-
           if (op2->temp)
             LiberaPolinomio(op2->poli);
 
           FREE(op1);
           FREE(op2);
+
           break;
 
         case '~':
