@@ -29,6 +29,7 @@ void remove_elem(matriz *a, ap_elemento r);
 
 void erro(char *msg)
 { 
+  int aux;
   printf("\n*** %s\n", msg); 
 
   exit(1);

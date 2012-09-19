@@ -25,6 +25,7 @@ void entradaInvalida()
 {
   /* Imprime mensagem de erro e termina execução */
 
+
   printf("Dados inválidos\n");
   exit(0);
 } /* entradaInvalida */
