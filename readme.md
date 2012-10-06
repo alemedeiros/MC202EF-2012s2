@@ -10,5 +10,8 @@ Os diretórios estão estruturados da seguinte maneira:
 * `<número da tarefa>/` : Número da tarefa relacionada
   * `dados` : Arquivos de teste do SuSy
   * `src` : Arquivos fonte com o código da minha solução.
+
+
+
 * * *
 Todas as soluções foram elaboradas por alexandre medeiros.
