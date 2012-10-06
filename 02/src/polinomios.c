@@ -93,7 +93,7 @@ void LiberaPolinomio(Polinomio p)
 
 } /* LiberaPolinomio */
 
-Boolean PolinomioNulo(Polinomio p) 
+Boolean PolinomioNulo(Polinomio p)
 {
   /* Verifica se o polinômio 'p' é identicamente nulo.                    */
 
@@ -192,26 +192,6 @@ Polinomio SomaPolinomios(Polinomio a, Polinomio b)
 
 } /* SomaPolinomios */
 
-Polinomio SubPolinomios(Polinomio a, Polinomio b)
-{
-  /* Devolve a diferença entre o polinômio 'a' e o polinômio 'b'. Não      */
-  /* altera os polinômios dados. Termos nulos não são inseridos no         */
-  /* resultado.                                                            */
-  
-  Polinomio sim_b, res;
-  
-  /* Calcula o Simétrico de b, multiplicando-o por (0,-1.0). */
-  sim_b = MultTermo(b, 0, -1.0);
-  
-  /* Calcula a soma de a e o simétrico de b. */
-  res = SomaPolinomios(a, sim_b);
-  
-  LiberaPolinomio(sim_b);
-  
-  return res;
-  
-} /* SubPolinomios */
-
 Polinomio MultTermo(Polinomio p, int e, float c)
 {
   /* Devolve o polinômio 'p' multiplicado pelo termo '(e,c)'. Supõe       */
@@ -246,8 +226,7 @@ Polinomio MultPolinomios(Polinomio a, Polinomio b)
   aux2,               // Resultado parcial do resultado atual com 'aux1'
   atualB = b->prox,   // Termo atual do Polinômio 'b'
   res;                // Resultado final
-  
-  
+
   res = CriaPolinomioNulo();
 
   /* Multiplica o polinomio 'a' pelos termos de 'b', usando um termo de

@@ -58,7 +58,7 @@ int main()
     /* Inicializa vetor de mínimos e máximos */
     min[i] = info[i][0];
     max[i] = info[0][i];
-    
+
     for (j = 0 ; j < n ; j++) {
       if (info[i][j] < min[i])
         min[i] = info[i][j];
@@ -82,6 +82,6 @@ int main()
 
   if (aux == 0)
     printf("    nenhum\n");
-  
+
   return 0;
 } /* main */

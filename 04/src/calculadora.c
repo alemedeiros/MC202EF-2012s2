@@ -33,49 +33,49 @@ Polinomio vetorPoli[TAM_BASE];
 
 void InicializaBasePolinomios()
 /* Inicializa polinômios com NULL, indicando que não há polinômios       */
-/* válidos na base.                                                      */ 
+/* válidos na base.                                                      */
 {
-  int i;
+    int i;
 
-  for (i = 0; i < TAM_BASE; i++)
-    vetorPoli[i] = NULL;
+    for (i = 0; i < TAM_BASE; i++)
+        vetorPoli[i] = NULL;
 
-  return;
+    return;
 
 } /* InicializaBasePolinomios */
 
 Polinomio RecuperaPolinomio(char x)
 /* Retorna o polinômio de nome x.                                        */
 {
-  Polinomio poli;
+    Polinomio poli;
 
-  x = toupper(x);
-  
-  if (x >= 'A' && x < 'A' + TAM_BASE) 
-    poli =  vetorPoli[x - 'A'];
-  else {
-    IMPRIME_ERRO(MSG_ERRO_NOME_INVALIDO);
-    return NULL;
-  }
+    x = toupper(x);
 
-  if (poli == NULL)
-    IMPRIME_ERRO(MSG_ERRO_POLINOMIO_NAO_INICIALIZADO);
+    if (x >= 'A' && x < 'A' + TAM_BASE)
+        poli =  vetorPoli[x - 'A'];
+    else {
+        IMPRIME_ERRO(MSG_ERRO_NOME_INVALIDO);
+        return NULL;
+    }
 
-  return poli;
+    if (poli == NULL)
+        IMPRIME_ERRO(MSG_ERRO_POLINOMIO_NAO_INICIALIZADO);
+
+    return poli;
 
 } /* RecuperaPolinomio */
 
 void ArmazenaPolinomio(char x, Polinomio p)
 /* Armazena o polinômio p sob o nome x na base.                          */
 {
-  x = toupper(x);
+    x = toupper(x);
 
-  if (x >= 'A' && x < 'A' + TAM_BASE) 
-    vetorPoli[x - 'A'] = p;
-  else 
-    IMPRIME_ERRO(MSG_ERRO_NOME_INVALIDO);
+    if (x >= 'A' && x < 'A' + TAM_BASE)
+        vetorPoli[x - 'A'] = p;
+    else
+        IMPRIME_ERRO(MSG_ERRO_NOME_INVALIDO);
 
-  return;
+    return;
 
 } /* ArmazenaPolinomio */
 
@@ -83,24 +83,24 @@ void ArmazenaPolinomio(char x, Polinomio p)
 
 /* Definição dos elementos da pilha. Polinômios temporários devem ser     */
 /* liberados após terem sido utilizados. Polinômios da base só são        */
-/* liberados quando o usuário invoca libera.                              */ 
+/* liberados quando o usuário invoca libera.                              */
 typedef struct ElemPilha
 {
-  Polinomio poli;
-  Boolean temp; 
+    Polinomio poli;
+    Boolean temp;
 } ElemPilha;
 
 Polinomio CopiaPolinomio (Polinomio p)
 /* Retorna uma cópia do polinomio 'p'                                      */
 {
-  Polinomio aux, res;
+    Polinomio aux, res;
 
-  aux = CriaPolinomioNulo();
-  res = SomaPolinomios(p,aux);
+    aux = CriaPolinomioNulo();
+    res = SomaPolinomios(p,aux);
 
-  LiberaPolinomio(aux);
+    LiberaPolinomio(aux);
 
-  return res;
+    return res;
 
 } /* CopiaPolinomio */
 
@@ -108,125 +108,125 @@ ElemPilha* VerificaDesempilha (Pilha* pilha)
 /* Desempilha um elemento, enviando uma mensagem de erro caso a pilha      */
 /* esteja vazia.                                                           */
 {
-  if (PilhaVazia(pilha)) {
-    IMPRIME_ERRO(MSG_ERRO_FALTA_OPERANDO);
-    return NULL;
-  }
+    if (PilhaVazia(pilha)) {
+        IMPRIME_ERRO(MSG_ERRO_FALTA_OPERANDO);
+        return NULL;
+    }
 
-  return (ElemPilha*) Desempilha(pilha);
+    return (ElemPilha*) Desempilha(pilha);
 
 } /* VerificaDesempilha */
 
 void EmpilhaOperando(Pilha* pilha, Polinomio poli, Boolean temp)
 /* Cria e empilha um nó do tipo ElemPilha.                                 */
 {
-  ElemPilha *elem = MALLOC (sizeof(ElemPilha));
-  elem->poli = poli; 
-  elem->temp = temp; 
-  Empilha (pilha, elem);
+    ElemPilha *elem = MALLOC (sizeof(ElemPilha));
+    elem->poli = poli;
+    elem->temp = temp;
+    Empilha (pilha, elem);
 
-  return;
+    return;
 
 } /* EmpilhaOperando */
 
 Boolean Operando(char c)
 /* Verifica se um caractere corresponde a um operando válido.              */
 {
-  return (c >= 'a' && c < 'a'+TAM_BASE) || (c >= 'A' && c < 'A'+TAM_BASE);
+    return (c >= 'a' && c < 'a'+TAM_BASE) || (c >= 'A' && c < 'A'+TAM_BASE);
 
 } /* Operando */
 
 Polinomio CalcExpr(char* expr)
 /* Retorna o polinômio referente à expressão dada                        */
-{ 
-  char aux;
-  Pilha duracell;
-  Polinomio res;
-  ElemPilha *op1, *op2, *final;
+{
+    char aux;
+    Pilha duracell;
+    Polinomio res;
+    ElemPilha *op1, *op2, *final;
 
-  /* Inicializa Pilha da expressão */
-  CriaPilha(&duracell);
+    /* Inicializa Pilha da expressão */
+    CriaPilha(&duracell);
 
-  while(*expr != '\0') {
-    if (Operando(*expr)) {
-      /* Empilha polinômio. */
-      aux = toupper(*expr);
-      EmpilhaOperando(&duracell, vetorPoli[(aux - 'A')], false);
-    } else
-      switch(*expr) {
-        case '+':
-        case '-':
-        case '*':
-          /* Operadores Binários */
+    while(*expr != '\0') {
+        if (Operando(*expr)) {
+            /* Empilha polinômio. */
+            aux = toupper(*expr);
+            EmpilhaOperando(&duracell, vetorPoli[(aux - 'A')], false);
+        } else
+            switch(*expr) {
+            case '+':
+            case '-':
+            case '*':
+                /* Operadores Binários */
 
-          /* Desempilha os operandos. */
-          op2 = VerificaDesempilha(&duracell);
-          op1 = VerificaDesempilha(&duracell);
+                /* Desempilha os operandos. */
+                op2 = VerificaDesempilha(&duracell);
+                op1 = VerificaDesempilha(&duracell);
 
-          if (op1 == NULL || op2 == NULL)
-            IMPRIME_ERRO(MSG_ERRO_FALTA_OPERANDO);
-          
-          /* Empilha o resultado da Operação. */
-          if (*expr == '+')
-            EmpilhaOperando(&duracell, SomaPolinomios(op1->poli, op2->poli), true);
-          if (*expr == '-')
-            EmpilhaOperando(&duracell, SubPolinomios(op1->poli, op2->poli), true);
-          if (*expr == '*')
-            EmpilhaOperando(&duracell, MultPolinomios(op1->poli, op2->poli), true);
+                if (op1 == NULL || op2 == NULL)
+                    IMPRIME_ERRO(MSG_ERRO_FALTA_OPERANDO);
 
-          /* Libera a memoria dinâmica necessária. */
-          if (op1->temp)
-            LiberaPolinomio(op1->poli);
-          if (op2->temp)
-            LiberaPolinomio(op2->poli);
+                /* Empilha o resultado da Operação. */
+                if (*expr == '+')
+                    EmpilhaOperando(&duracell, SomaPolinomios(op1->poli, op2->poli), true);
+                if (*expr == '-')
+                    EmpilhaOperando(&duracell, SubPolinomios(op1->poli, op2->poli), true);
+                if (*expr == '*')
+                    EmpilhaOperando(&duracell, MultPolinomios(op1->poli, op2->poli), true);
 
-          FREE(op1);
-          FREE(op2);
+                /* Libera a memoria dinâmica necessária. */
+                if (op1->temp)
+                    LiberaPolinomio(op1->poli);
+                if (op2->temp)
+                    LiberaPolinomio(op2->poli);
 
-          break;
+                FREE(op1);
+                FREE(op2);
 
-        case '~':
-          /* Operador unário */
+                break;
 
-          /* Desempilha o operando. */
-          op1 = VerificaDesempilha(&duracell);
+            case '~':
+                /* Operador unário */
 
-          /* Empilha o resultado da Operação. */
-          EmpilhaOperando(&duracell, MultTermo(op1->poli, 0, -1.0), true);
+                /* Desempilha o operando. */
+                op1 = VerificaDesempilha(&duracell);
 
-          /* Libera a memoria dinâmica necessária. */
-          if (op1->temp)
-            LiberaPolinomio(op1->poli);
+                /* Empilha o resultado da Operação. */
+                EmpilhaOperando(&duracell, MultTermo(op1->poli, 0, -1.0), true);
 
-          FREE(op1);
+                /* Libera a memoria dinâmica necessária. */
+                if (op1->temp)
+                    LiberaPolinomio(op1->poli);
 
-          break;
+                FREE(op1);
 
-        default:
-          /* Erro: nenhum operador válido. */
-          IMPRIME_ERRO(MSG_ERRO_CARACTERE_INVALIDO);
-      }
+                break;
 
-    /* Avança para o próximo caractere da expressão. */
-    expr += 1;
-  }
+            default:
+                /* Erro: nenhum operador válido. */
+                IMPRIME_ERRO(MSG_ERRO_CARACTERE_INVALIDO);
+            }
 
-  final = VerificaDesempilha(&duracell);
+        /* Avança para o próximo caractere da expressão. */
+        expr += 1;
+    }
 
-  if (PilhaVazia(&duracell)) {
-    /* Pilha Vazia, retorna resultado após liberar a memória dinâmica. */
-    res = final->poli;
+    final = VerificaDesempilha(&duracell);
 
-    if (!final->temp)
-      res = CopiaPolinomio(final->poli);
+    if (PilhaVazia(&duracell)) {
+        /* Pilha Vazia, retorna resultado após liberar a memória dinâmica. */
+        res = final->poli;
 
-    FREE(final);
-    return res;
+        if (!final->temp)
+            res = CopiaPolinomio(final->poli);
 
-  } else {
-    /* Erro: Sobraram elementos na pilha. */
-    IMPRIME_ERRO(MSG_ERRO_FALTA_OPERADOR);
-    return NULL;
-  }
+        FREE(final);
+        return res;
+
+    } else {
+        /* Erro: Sobraram elementos na pilha. */
+        IMPRIME_ERRO(MSG_ERRO_FALTA_OPERADOR);
+        return NULL;
+    }
 
 } /* CalcExpr */

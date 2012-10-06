@@ -28,19 +28,19 @@
 void remove_elem(matriz *a, ap_elemento r);
 
 void erro(char *msg)
-{ 
+{
   int aux;
-  printf("\n*** %s\n", msg); 
+  printf("\n*** %s\n", msg);
 
   exit(1);
 
 } /* erro */
 
 void prox_linha(void)
-{ 
+{
   char c;
 
-  do { 
+  do {
     scanf("%c", &c);
   } while ((c != '\n') && (c != EOF));
 
@@ -66,7 +66,7 @@ void inicializa(matriz *a, int m, int n)
 
   /* Cria a cabeça das cabeças "r". */
   r = (ap_elemento)MALLOC(sizeof(elemento));
-  if (r == NULL) 
+  if (r == NULL)
     erro("inicializa: memória esgotada");
 
   r->lin = m;
@@ -78,7 +78,7 @@ void inicializa(matriz *a, int m, int n)
   a->ccol[n] = r;
 
   /* Cria cabeças das linhas: */
-  for (i = 0; i < m; i++) { 
+  for (i = 0; i < m; i++) {
     t = (ap_elemento)MALLOC(sizeof(elemento));
     if (t == NULL) { erro("inicializa: memória esgotada"); }
     t->lin = i;
@@ -88,7 +88,7 @@ void inicializa(matriz *a, int m, int n)
     t->dir = t;
 
     /* Insere logo acima da super-cabeça: */
-    t->ac = r->ac; 
+    t->ac = r->ac;
     t->ab = r;
     t->ab->ac = t;
     t->ac->ab = t;
@@ -96,7 +96,7 @@ void inicializa(matriz *a, int m, int n)
   }
 
   /* Cria cabeças das colunas: */
-  for (i = 0; i < n; i++) { 
+  for (i = 0; i < n; i++) {
     t = (ap_elemento)MALLOC(sizeof(elemento));
     if (t == NULL)
       erro("inicializa: memória esgotada");
@@ -104,11 +104,11 @@ void inicializa(matriz *a, int m, int n)
     t->lin = m;
     t->col = i;
     t->val = 0;
-    t->ab = t; 
+    t->ab = t;
     t->ac = t;
 
     /* Insere a esquerda da super-cabeça: */
-    t->esq = r->esq; 
+    t->esq = r->esq;
     t->dir = r;
     t->dir->esq = t;
     t->esq->dir = t;
@@ -119,7 +119,7 @@ void inicializa(matriz *a, int m, int n)
 
 } /* inicializa */
 
-void libera(matriz *a) 
+void libera(matriz *a)
 /* Libera toda a memória dinâmica ocupada por uma matriz */
 {
   int i;
@@ -133,7 +133,7 @@ void libera(matriz *a)
     c = a->clin[i];
     p1 = c->dir;
 
-    while (p1 != c) { 
+    while (p1 != c) {
       p2 = p1->dir;
       remove_elem(a,p1);
       p1 = p2;
@@ -161,20 +161,20 @@ void encontra(matriz *a, int i, int j, ap_elemento *ppl, ap_elemento *ppc)
 {
   ap_elemento pl, pc;
 
-  if ((i < 0) || (i >= a->nlins)) 
+  if ((i < 0) || (i >= a->nlins))
     erro("encontra: linha inválida");
-  if ((j < 0) || (j >= a->ncols)) 
+  if ((j < 0) || (j >= a->ncols))
     erro("encontra: coluna inválida");
 
   /* Procura elemento "pl" na linha "i": */
-  pl = a->clin[i]; 
+  pl = a->clin[i];
   pl = pl->dir;
-  
+
   while (pl->col < j) { pl = pl->dir; }
 
   if (pl->col == j)
     pc = pl;
-  else { 
+  else {
     /* Procura elemento "pc" na coluna "j": */
     pc = a->ccol[j];
     pc = pc->ab;
@@ -196,9 +196,9 @@ float valor(matriz *a, int i, int j)
 {
   ap_elemento pl, pc;
 
-  encontra(a, i, j, &pl, &pc); 
+  encontra(a, i, j, &pl, &pc);
 
-  if (pl != pc) { 
+  if (pl != pc) {
     return 0;
   }
   else {
@@ -225,11 +225,11 @@ void remove_elem(matriz *a, ap_elemento r)
   return;
 
 } /* remove_elem */
- 
-void insere_elem(matriz *a, int i, int j, float v, ap_elemento pl, ap_elemento pc) 
+
+void insere_elem(matriz *a, int i, int j, float v, ap_elemento pl, ap_elemento pc)
 /* Função auxiliar: insere um elemento de valor "v" e índices "[i,j]",
-  dadas as posições dos sucessores do elemento "a[i,j]" na linha e 
-  coluna, respectivamente (possivelmente cabeças).  Supõe que o 
+  dadas as posições dos sucessores do elemento "a[i,j]" na linha e
+  coluna, respectivamente (possivelmente cabeças).  Supõe que o
   elemento não está na matriz, e que "v != 0". */
 {
   ap_elemento r;
@@ -265,7 +265,7 @@ void insere_elem(matriz *a, int i, int j, float v, ap_elemento pl, ap_elemento p
 void atribui(matriz *a, int i, int j, float v)
 {
   ap_elemento pl, pc;
-  encontra(a, i, j, &pl, &pc); 
+  encontra(a, i, j, &pl, &pc);
 
   if (pl != pc) {
     /* Elemento não existe; se "v" não é nulo, precisa encaixar: */
@@ -286,7 +286,7 @@ void atribui(matriz *a, int i, int j, float v)
 } /* atribui */
 
 void le_matriz(matriz *a)
-{ 
+{
   int m, n, d;
   int i, j, k; float v;
   int ip, jp; /* Índices do elemento anterior. */
@@ -329,9 +329,9 @@ void imprime_matriz(matriz *a)
   return;
 
 } /* imprime_matriz */
- 
+
 void transpoe(matriz *a, matriz *t)
-{ 
+{
   int i;
   ap_elemento elem_a;
   inicializa(t, a->ncols, a->nlins);
@@ -405,7 +405,7 @@ void soma(matriz *a, matriz *b, matriz *s)
 
 } /* soma */
 
-void multiplica(matriz *a, matriz *b, matriz *p) 
+void multiplica(matriz *a, matriz *b, matriz *p)
 {
   int i, j;
   float val;

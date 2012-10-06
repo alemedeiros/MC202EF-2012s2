@@ -31,7 +31,6 @@ void InsereTermoAux(Polinomio p, int e, float c)
 
 /*---------------- Implementação das funções da interface --------------*/
 
-
 void ImprimePolinomio(Polinomio p)
 {
   /* Imprime, em ordem crescente dos expoentes, os termos do              */
@@ -93,7 +92,7 @@ void LiberaPolinomio(Polinomio p)
 
 } /* LiberaPolinomio */
 
-Boolean PolinomioNulo(Polinomio p) 
+Boolean PolinomioNulo(Polinomio p)
 {
   /* Verifica se o polinômio 'p' é identicamente nulo.                    */
 
@@ -195,7 +194,7 @@ Polinomio SubPolinomios(Polinomio a, Polinomio b)
   /* Devolve a diferença entre o polinômio 'a' e o polinômio 'b'. Não      */
   /* altera os polinômios dados. Termos nulos não são inseridos no         */
   /* resultado.                                                            */
-  
+
   Polinomio res, atualA = a->prox, atualB = b->prox, aux;
 
   res = CriaPolinomioNulo();
@@ -249,7 +248,7 @@ Polinomio SubPolinomios(Polinomio a, Polinomio b)
   }
 
   return res;
-  
+
 } /* SubPolinomios */
 
 Polinomio MultTermo(Polinomio p, int e, float c)
@@ -286,8 +285,8 @@ Polinomio MultPolinomios(Polinomio a, Polinomio b)
   aux2,               // Resultado parcial do resultado atual com 'aux1'
   atualB = b->prox,   // Termo atual do Polinômio 'b'
   res;                // Resultado final
-  
-  
+
+
   res = CriaPolinomioNulo();
 
   /* Multiplica o polinomio 'a' pelos termos de 'b', usando um termo de
