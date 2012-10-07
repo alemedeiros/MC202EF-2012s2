@@ -36,7 +36,7 @@ Erro Fator();
 Erro Primario();
 
 /* Funções auxiliares */
-Erro Prox_Char();
+Erro ProxChar();
 Erro montaErro(int codigo, int pos);
 
 /*************************************************************/
@@ -59,7 +59,7 @@ Erro InPos(char *infixa, char *posfixa)
     indPos = indIn = 0;
 
     /* Avança até o primeiro Caractere. */
-    err = Prox_Char();
+    err = ProxChar();
     RETORNA_ERRO(err);
 
     /* Verifica se o primeiro caractere é fim de cadeia, ou seja, se a cadeia só possue espaços. */
@@ -95,7 +95,7 @@ Erro montaErro(int codigo, int posicao)
 
 } /* montaErro */
 
-Erro Prox_Char()
+Erro ProxChar()
 {
     /* Avança até o próximo caractere e verifica sua validade. */
 
@@ -111,7 +111,7 @@ Erro Prox_Char()
     else
         return montaErro(CARACTERE_INVALIDO, indIn);
 
-} /* Prox_Char */
+} /* ProxChar */
 
 Erro Expressao()
 {
@@ -132,7 +132,7 @@ Erro Expressao()
 
         indIn++;
 
-        err = Prox_Char();
+        err = ProxChar();
         RETORNA_ERRO(err);
     }
 
@@ -158,7 +158,7 @@ Erro Expressao()
     while ((op == '+') || (op == '-')) {
         indIn++;
 
-        err = Prox_Char();
+        err = ProxChar();
         RETORNA_ERRO(err);
 
         err = Termo();
@@ -168,7 +168,6 @@ Erro Expressao()
         indPos++;
 
         op = in[indIn];
-
     }
 
     return resCorreto;
@@ -192,7 +191,7 @@ Erro Termo()
     while ((op == '*') || (op == '/')) {
         indIn++;
 
-        err = Prox_Char();
+        err = ProxChar();
         RETORNA_ERRO(err);
 
         err = Fator();
@@ -222,7 +221,7 @@ Erro Fator()
     if (in[indIn] == '^') {
         indIn++;
 
-        err = Prox_Char();
+        err = ProxChar();
         RETORNA_ERRO(err);
 
         err = Fator();
@@ -251,7 +250,7 @@ Erro Primario()
 
         indIn++;
 
-        err = Prox_Char();
+        err = ProxChar();
         RETORNA_ERRO(err);
 
         err = Expressao();
@@ -261,7 +260,7 @@ Erro Primario()
         if (in[indIn] == ')') {
             indIn++;
 
-            err = Prox_Char();
+            err = ProxChar();
             RETORNA_ERRO(err);
         }
         else
@@ -277,7 +276,7 @@ Erro Primario()
         indPos++;
         indIn++;
 
-        err = Prox_Char();
+        err = ProxChar();
         RETORNA_ERRO(err);
 
         break; /* switch */
