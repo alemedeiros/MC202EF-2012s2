@@ -205,7 +205,7 @@ void PercorreBase(Base *p, void (*Visita)(Aluno*))
         return;
 
     PercorreBase((Base*) &(aux->esq), Visita);
-    Visita(&aux->info);
+    Visita(&(aux->info));
     PercorreBase((Base*) &(aux->dir), Visita);
 
     return;
