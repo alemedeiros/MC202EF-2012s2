@@ -1,3 +1,9 @@
+/*
+  Disciplina: MC202
+  Tarefa 05 
+  Segundo semestre de 2012
+*/
+
 /* 
  * analisador.h: Interface para o módulo de transformação de expressões na
  * notação infixa para pós-fixa.
@@ -17,8 +23,8 @@ typedef enum{
   CADEIA_DE_BRANCOS
 } CodigosErro;
 
-/* Estrutura para retorno de erro, indicando tipo do erro e posição */
-/* na cadeia de entrada.                                            */
+/* Estrutura para retorno de erro, indicando o tipo do erro e a posição
+   na cadeia de entrada.  */
 typedef struct erro {
   int posicao; 
   int codigoErro; 

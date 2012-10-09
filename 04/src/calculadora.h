@@ -20,6 +20,8 @@ void ArmazenaPolinomio(char x, Polinomio p);
 
 
 Polinomio CalcExpr(char* expr);
-/* Retorna o polinômio referente à expressão dada                        */
+/* Retorna o polinômio referente à expressão dada.                       */
+/* O polinômio devolvido é sempre uma nova cópia, mesmo que a            */
+/* expressão seja uma variável simples.                                  */
 
 #endif

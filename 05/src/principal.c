@@ -1,4 +1,10 @@
 /*
+  Disciplina: MC202
+  Tarefa 05 
+  Segundo semestre de 2012
+*/
+
+/*
  * principal.c - Arquivo de teste para o módulo de transformação de
  * expressões na notação infixa para pós-fixa.
  */

@@ -1,12 +1,41 @@
 /*
  * principal.c - Arquivo de teste para o módulo de transformação de
- * expressões em notação infixa para árvores binárias e represntações
+ * expressões em notação infixa para árvores binárias e representações
  * pré-fixa e pós-fixa.
  */
 #include <stdio.h>
 #include <string.h>
 #include "balloc.h"
 #include "analisador.h"
+
+/* Função despejaArv para ser usada na depuração */
+#include "imprimearvore.h"
+char cadeiainfo[2] = "*"; /* conterá a cadeia de um caractere */
+char *vazia = "Árvore vazia\n";
+
+ArvBin esq(ArvBin a, int d) {
+  /* Supõe a!=NULL */
+  return a->esq;
+}
+
+ArvBin dir(ArvBin a, int d) {
+  /* Supõe a!=NULL */
+  return a->dir;
+}
+
+char *info(ArvBin a, int d) {
+  /* Supõe a!=NULL */
+  cadeiainfo[0] = a->info;
+  return cadeiainfo;
+}
+
+
+void despejaArv(ArvBin a) {
+/* Função para depuração: despeja a árvore "deitada" */
+  printf("\nÁrvore despejada:\n");
+  ImprimeArvore(a,(subarvfunc*)esq,(subarvfunc*)dir,(infofunc*)info,NULL,1,vazia);
+  printf("\n");
+}
 
 
 /* Função auxiliar que imprime dados sobre bloco de memória não
@@ -69,17 +98,6 @@ int leExpr(char *in) {
 } /* LeExpr */
 
 
-void despejaArv(ArvBin a) {
-  /* Despeja uma árvore em notação infixa -- pode ser usada para
-     depuração. */
-  if (a!=NULL) {
-    despejaArv(a->esq);
-    printf("%c",a->info);
-    despejaArv(a->dir);
-  }
-}
-
-
 int main() {
   char in[TAM_MAX_EXPR+2], res[TAM_MAX_EXPR+1];
   Erro erro;
@@ -90,6 +108,8 @@ int main() {
     printf("Infixa: %s\n", in);
     if (erro.codigoErro == EXPR_VALIDA) {
       ArvPre(arv,res);
+      /* para ser usado em depuração: basta descomentar */
+      /* despejaArv(arv); */
       printf("Prefixa: %s\n",res);
       ArvPos(arv,res);
       printf("Posfixa: %s\n\n",res);
