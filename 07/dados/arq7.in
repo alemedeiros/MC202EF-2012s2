@@ -1,0 +1,67 @@
+# Teste de remoção com os alunos das turmas E e F
+#
+# Turma E
+i 139270 Yuri Correa Pinto Soares
+i 137748 Tomas Silva Queiroga
+i 137733 Tiago Bento Fernandes
+i 137644 Tatiana Ottenio da Costa
+i 118736 Tarcisio Fernandes
+i 137571 Samuel de Oliveira la Marck
+i 045528 Natasha de Campos Cerboncini
+i 138923 Murilo de Lima Cruz
+i 137078 Milena Mayumi Costa
+i 138771 Luiz Antonio Andia
+i 136700 Luciano Padua Sabenca
+i 138726 Lucas Alvarez Tafarello
+i 136323 Jucelio Evangelista Fonseca
+i 136249 Joao Henrique Stange Hoffmam
+i 136034 Gustavo Taminato Imazaki
+i 102552 Gustavo Passarelli Silveira
+i 061307 Gustavo Cipriano Gimenes Vieira
+i 138450 Guilherme da Rocha Alves Mendes
+i 081453 Gabriel Franco de Souza
+i 135833 Gabriela de Oliveira Ribas
+i 135723 Fernando Henrique dos S. Goncalves
+i 140604 Felipe Caminada
+i 135551 Elisa Dell Arriva
+i 135494 Diego Rocha
+i 135214 Caio Vinicius Uvini Palissari
+#
+# Turma F
+i 105745 Túlio Bazan da Silva
+i 137715 Thiago dos Santos Pinto
+i 072483 Thiago Akira Ferreira
+i 139056 Raphael de Oliveira Rodrigues Giron
+i 121295 Rafael Matheus Garcia
+i 137260 Pedro Cordeiro de Almeida
+i 138889 Matheus Jun Ota
+i 105351 Maria Angelica de Araujo Barnabe
+i 136823 Marcos Massayuki Kobuchi
+i 082102 Marcelo Becker Spach
+i 138745 Lucas Piscello Cosme
+i 024374 Lucas de Magalhães Araujo
+i 136576 Luan Gustavo Bicesto
+i 139546 Joao Pedro Ramos Lopes
+i 136045 Heitor Rossi Ambiel Facini
+i 136004 Gustavo Cesar Nunes
+i 138466 Guilherme Sbrolini Mazzariol
+i 135680 Fellipe Santiago Scarpa Caetano
+i 138309 Fabio Maffei Lira
+i 122545 Elvis Rabello
+i 135491 Diego Luis de Souza
+i 135334 Cibelle Begalli
+i 135212 Caio Teixeira
+i 134949 André Muricy Santos
+i 090360 Anderson Dias Duarte
+#
+r 081453
+r 024374
+r 072483
+r 090360
+r 105351
+r 123456
+p
+n
+a
+l
+x

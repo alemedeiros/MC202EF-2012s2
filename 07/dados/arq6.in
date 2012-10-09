@@ -1,0 +1,56 @@
+# Testes para remoção
+i 043614 José Almeida
+i 042838 João Nogueira
+i 042360 Maria Pinheiros
+i 044559 Elaine Rodrigues
+i 042060 Antônio Siqueira
+i 023627 Marcelo Fernandes
+i 043381 Gustavo Correia
+i 046462 Felipe da Silva
+i 045005 Luís de Oliveira
+i 042851 Antônio Rocha
+i 044577 André Ferreira
+i 041728 Ricardo Reis
+i 043239 Vítor de Abreu
+i 042989 Marcos Antunes
+i 046959 Diego Ramos
+i 041986 Renato de Melo
+i 046339 Fernando Albuquerque
+i 046206 João Gonçalves
+i 045116 Luís Martins
+i 045412 José Carvalho
+i 046127 Alexandre Mendonça
+i 046874 Rafael de Souza
+i 043530 João Magalhães
+n
+a
+# Remove todos
+r 042360
+r 042838
+r 042851
+r 042989
+r 043239
+r 043381
+r 023627
+r 041728
+r 041986
+r 042060
+r 043530
+r 045412
+r 046127
+r 042989
+r 046206
+r 046339
+r 046462
+r 046874
+r 046959
+r 043614
+r 044559
+r 044577
+r 045005
+r 045116
+n
+a
+p
+l
+x

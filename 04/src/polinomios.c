@@ -1,23 +1,23 @@
-/* Programa: polinomios.c (Polin√¥mios)                 */
+/* Programa: polinomios.c (PolinÙmios)                 */
 /* Autor: Alexandre N. de Medeiros        RA115966     */
 /* Disciplina: MC202                      Turma E      */
 /* Data: 10/ago/2011                                   */
 /* Revisado: 16/set/2012                               */
 
-/* Este m√≥dulo implementa opera√ß√µes sobre polin√¥mios em uma vari√°vel.   */
-/* Cada polin√¥mio √© representado por uma lista ligada simples, com n√≥   */
-/* cabe√ßa. Os n√≥s da lista representam os termos n√£o nulos do polin√¥mio */
-/* em ordem crescente dos seus expoentes. O n√≥ cabe√ßa tem expoente '-1'.*/
+/* Este mÛdulo implementa operaÁıes sobre polinÙmios em uma vari·vel.   */
+/* Cada polinÙmio È representado por uma lista ligada simples, com nÛ   */
+/* cabeÁa. Os nÛs da lista representam os termos n„o nulos do polinÙmio */
+/* em ordem crescente dos seus expoentes. O nÛ cabeÁa tem expoente '-1'.*/
 
 #include "polinomios.h"
 #include "balloc.h"
 #include <stdio.h>
 
-/*-----------------------  Fun√ß√µes auxiliares  ----------------------------*/
+/*-----------------------  FunÁıes auxiliares  ----------------------------*/
 
 void InsereTermoAux(Polinomio p, int e, float c)
 {
-  /* Insere o termo '(e,c)' ap√≥s o n√≥ apontado por 'p'.                  */
+  /* Insere o termo '(e,c)' apÛs o nÛ apontado por 'p'.                  */
 
   Polinomio novo = MALLOC(sizeof(Termo));
   novo->expo = e;
@@ -29,21 +29,21 @@ void InsereTermoAux(Polinomio p, int e, float c)
 
 } /* InsereTermoAux */
 
-/*---------------- Implementa√ß√£o das fun√ß√µes da interface --------------*/
+/*---------------- ImplementaÁ„o das funÁıes da interface --------------*/
 
 void ImprimePolinomio(Polinomio p)
 {
   /* Imprime, em ordem crescente dos expoentes, os termos do              */
-  /* n√£o nulos do 'p'. No caso do polin√¥mio identicamente nulo,           */
-  /* imprime as palavras "Polin√¥mio nulo".                                */
+  /* n„o nulos do 'p'. No caso do polinÙmio identicamente nulo,           */
+  /* imprime as palavras "PolinÙmio nulo".                                */
 
   if (p==NULL) {
-    printf("Polin√¥mio inv√°lido\n");
+    printf("PolinÙmio inv·lido\n");
     return;
   }
 
   if (p->prox==p) {
-    printf("Polin√¥mio nulo\n");
+    printf("PolinÙmio nulo\n");
     return;
   }
 
@@ -56,12 +56,11 @@ void ImprimePolinomio(Polinomio p)
 
 } /* ImprimePolinomio */
 
-
 Polinomio CriaPolinomioNulo()
 {
-  /* Devolve um novo polin√¥mio identicamente nulo.                        */
+  /* Devolve um novo polinÙmio identicamente nulo.                        */
 
-  /* Cria um n√≥ cabe√ßa e retorna seu endere√ßo. */
+  /* Cria um nÛ cabeÁa e retorna seu endereÁo. */
   Polinomio novo = MALLOC(sizeof(Termo));
   novo->expo = -1;
   novo->prox = novo;
@@ -70,22 +69,20 @@ Polinomio CriaPolinomioNulo()
 
 } /* CriaPolinomioNulo */
 
-
-
 void LiberaPolinomio(Polinomio p)
 {
-  /* Libera toda a mem√≥ria din√¢mica ocupada por um polin√¥mio.             */
+  /* Libera toda a memÛria din‚mica ocupada por um polinÙmio.             */
 
   Polinomio q = p->prox, aux;
 
-  /* Libera n√≥ por n√≥ at√© voltar ao n√≥ cabe√ßa da lista. */
+  /* Libera nÛ por nÛ atÈ voltar ao nÛ cabeÁa da lista. */
   while (q != p) {
     aux = q->prox;
     FREE(q);
     q = aux;
   }
 
-  /* Libera o n√≥ cabe√ßa */
+  /* Libera o nÛ cabeÁa */
   FREE(p);
 
   return;
@@ -94,9 +91,9 @@ void LiberaPolinomio(Polinomio p)
 
 Boolean PolinomioNulo(Polinomio p)
 {
-  /* Verifica se o polin√¥mio 'p' √© identicamente nulo.                    */
+  /* Verifica se o polinÙmio 'p' È identicamente nulo.                    */
 
-  /* Se o n√≥ cabe√ßa aponta pra si mesmo o Polin√¥mio √© nulo. */
+  /* Se o nÛ cabeÁa aponta pra si mesmo o PolinÙmio È nulo. */
   if (p->prox == p)
     return true;
   else
@@ -104,17 +101,16 @@ Boolean PolinomioNulo(Polinomio p)
 
 } /* PolinomioNulo */
 
-
 void InsereTermo(Polinomio p, int e, float c)
 {
   /* Insere no polinomio 'p' o termo '(e,c)', de maneira a manter os      */
-  /* termos ordenados. Sup√µe que n√£o existe ainda em 'p' um termo com     */
-  /* expoente 'e', e que 'c' n√£o √© zero.                                  */
+  /* termos ordenados. Supıe que n„o existe ainda em 'p' um termo com     */
+  /* expoente 'e', e que 'c' n„o È zero.                                  */
 
   Polinomio atual = p, prox = p->prox;
 
-  /* Caso encontrou a posi√ß√£o adequada OU chegou no final do polinomio
-   * retorna a posi√ß√£o anterior.
+  /* Caso encontrou a posiÁ„o adequada OU chegou no final do polinomio
+   * retorna a posiÁ„o anterior.
    */
   while (prox->expo < e && prox != p) {
     atual = prox;
@@ -127,22 +123,21 @@ void InsereTermo(Polinomio p, int e, float c)
 
 } /* InsereTermo */
 
-
 Polinomio SomaPolinomios(Polinomio a, Polinomio b)
 {
-  /* Devolve a soma dos polin√¥mios 'a' e 'b'. N√£o altera os polin√¥mios    */
-  /* dados. Termos nulos n√£o s√£o inseridos no resultados.                 */
+  /* Devolve a soma dos polinÙmios 'a' e 'b'. N„o altera os polinÙmios    */
+  /* dados. Termos nulos n„o s„o inseridos no resultados.                 */
 
   Polinomio res, atualA = a->prox, atualB = b->prox, aux;
 
   res = CriaPolinomioNulo();
   aux = res;
 
-  /* Como ambos polin√¥mios est√£o ordenados, faz uma intercala√ß√£o
+  /* Como ambos polinÙmios est„o ordenados, faz uma intercalaÁ„o
    * e caso encontra um termo de mesmo expoente em ambos, soma-os
    */
   while (atualA != a && atualB != b) {
-    /* Termos de mesmo expoente em ambos polin√¥mios. */
+    /* Termos de mesmo expoente em ambos polinÙmios. */
     if (atualA->expo == atualB->expo) {
       if (atualA->coef + atualB->coef != 0) {
         InsereTermoAux(aux, atualA->expo, atualA->coef + atualB->coef);
@@ -153,13 +148,13 @@ Polinomio SomaPolinomios(Polinomio a, Polinomio b)
       atualB = atualB->prox;
 
     } else if (atualA->expo < atualB->expo) {
-      /* Termo de expoente exclusivo do polin√¥mio 'a'. */
+      /* Termo de expoente exclusivo do polinÙmio 'a'. */
       InsereTermoAux(aux, atualA->expo, atualA->coef);
       aux = aux->prox;
 
       atualA = atualA->prox;
     } else if (atualA->expo > atualB->expo) {
-      /* Termo de expoente exclusivo do polin√¥mio 'b'. */
+      /* Termo de expoente exclusivo do polinÙmio 'b'. */
       InsereTermoAux(aux, atualB->expo, atualB->coef);
       aux = aux->prox;
 
@@ -168,7 +163,7 @@ Polinomio SomaPolinomios(Polinomio a, Polinomio b)
 
   }
 
-  /* Insere, no novo polin√¥mio, os termos restantes do polin√¥mio de maior grau. */
+  /* Insere, no novo polinÙmio, os termos restantes do polinÙmio de maior grau. */
   if (atualA == a) {
     while (atualB != b) {
       InsereTermoAux(aux, atualB->expo, atualB->coef);
@@ -191,8 +186,8 @@ Polinomio SomaPolinomios(Polinomio a, Polinomio b)
 
 Polinomio SubPolinomios(Polinomio a, Polinomio b)
 {
-  /* Devolve a diferen√ßa entre o polin√¥mio 'a' e o polin√¥mio 'b'. N√£o      */
-  /* altera os polin√¥mios dados. Termos nulos n√£o s√£o inseridos no         */
+  /* Devolve a diferenÁa entre o polinÙmio 'a' e o polinÙmio 'b'. N„o      */
+  /* altera os polinÙmios dados. Termos nulos n„o s„o inseridos no         */
   /* resultado.                                                            */
 
   Polinomio res, atualA = a->prox, atualB = b->prox, aux;
@@ -200,11 +195,11 @@ Polinomio SubPolinomios(Polinomio a, Polinomio b)
   res = CriaPolinomioNulo();
   aux = res;
 
-  /* Como ambos polin√¥mios est√£o ordenados, faz uma intercala√ß√£o
+  /* Como ambos polinÙmios est„o ordenados, faz uma intercalaÁ„o
    * e caso encontra um termo de mesmo expoente em ambos, soma-os
    */
   while (atualA != a && atualB != b) {
-    /* Termos de mesmo expoente em ambos polin√¥mios. */
+    /* Termos de mesmo expoente em ambos polinÙmios. */
     if (atualA->expo == atualB->expo) {
       if (atualA->coef - atualB->coef != 0) {
         InsereTermoAux(aux, atualA->expo, atualA->coef - atualB->coef);
@@ -215,13 +210,13 @@ Polinomio SubPolinomios(Polinomio a, Polinomio b)
       atualB = atualB->prox;
 
     } else if (atualA->expo < atualB->expo) {
-      /* Termo de expoente exclusivo do polin√¥mio 'a'. */
+      /* Termo de expoente exclusivo do polinÙmio 'a'. */
       InsereTermoAux(aux, atualA->expo, atualA->coef);
       aux = aux->prox;
 
       atualA = atualA->prox;
     } else if (atualA->expo > atualB->expo) {
-      /* Termo de expoente exclusivo do polin√¥mio 'b'. */
+      /* Termo de expoente exclusivo do polinÙmio 'b'. */
       InsereTermoAux(aux, atualB->expo, -atualB->coef);
       aux = aux->prox;
 
@@ -230,7 +225,7 @@ Polinomio SubPolinomios(Polinomio a, Polinomio b)
 
   }
 
-  /* Insere, no novo polin√¥mio, os termos restantes do polin√¥mio de maior grau. */
+  /* Insere, no novo polinÙmio, os termos restantes do polinÙmio de maior grau. */
   if (atualA == a) {
     while (atualB != b) {
       InsereTermoAux(aux, atualB->expo, -atualB->coef);
@@ -253,17 +248,17 @@ Polinomio SubPolinomios(Polinomio a, Polinomio b)
 
 Polinomio MultTermo(Polinomio p, int e, float c)
 {
-  /* Devolve o polin√¥mio 'p' multiplicado pelo termo '(e,c)'. Sup√µe       */
-  /* que 'c' n√£o √© nulo. N√£o altera os polin√¥mio dado.                    */
+  /* Devolve o polinÙmio 'p' multiplicado pelo termo '(e,c)'. Supıe       */
+  /* que 'c' n„o È nulo. N„o altera os polinÙmio dado.                    */
 
   Polinomio
-  res,                // Resultado da Multiplica√ß√£o
-  atual = p->prox,    // N√≥ atual do polinomio p
+  res,                // Resultado da MultiplicaÁ„o
+  atual = p->prox,    // NÛ atual do polinomio p
   aux;
 
   res = CriaPolinomioNulo();
   aux = res;
-  /* Multiplica todos termos do polin√¥mio 'p' por um termo. */
+  /* Multiplica todos termos do polinÙmio 'p' por um termo. */
   while (atual != p) {
     InsereTermoAux(aux, atual->expo + e, atual->coef * c);
     aux = aux->prox;
@@ -274,33 +269,32 @@ Polinomio MultTermo(Polinomio p, int e, float c)
 
 } /* MultTermo */
 
-
 Polinomio MultPolinomios(Polinomio a, Polinomio b)
 {
-  /* Devolve o produto dos polin√¥mios 'a' e 'b'. N√£o altera os polin√¥mios */
+  /* Devolve o produto dos polinÙmios 'a' e 'b'. N„o altera os polinÙmios */
   /* dados.                                                               */
 
   Polinomio
-  aux1,               // Resultado parcial da multiplica√ß√£o por um termo
+  aux1,               // Resultado parcial da multiplicaÁ„o por um termo
   aux2,               // Resultado parcial do resultado atual com 'aux1'
-  atualB = b->prox,   // Termo atual do Polin√¥mio 'b'
+  atualB = b->prox,   // Termo atual do PolinÙmio 'b'
   res;                // Resultado final
 
 
   res = CriaPolinomioNulo();
 
   /* Multiplica o polinomio 'a' pelos termos de 'b', usando um termo de
-   * 'b' por vez, somando o resultado de cada multiplica√ß√£o.
+   * 'b' por vez, somando o resultado de cada multiplicaÁ„o.
    */
   while (atualB != b) {
-    /* Multiplica 'atualB' termo pelo polin√¥mio 'a'. */
+    /* Multiplica 'atualB' termo pelo polinÙmio 'a'. */
     aux1 = MultTermo(a, atualB->expo, atualB->coef);
     atualB = atualB->prox;
 
-    /* Soma o resultado da multiplica√ß√£o com a soma parcial. */
+    /* Soma o resultado da multiplicaÁ„o com a soma parcial. */
     aux2 = SomaPolinomios(res, aux1);
 
-    /* Libera os Polin√¥mios que n√£o ser√£o mais utilizados. */
+    /* Libera os PolinÙmios que n„o ser„o mais utilizados. */
     LiberaPolinomio(aux1);
     LiberaPolinomio(res);
 
