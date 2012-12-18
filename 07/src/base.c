@@ -1,6 +1,6 @@
 /* Programa: base.c (Base de dados com árvores de busca simples) */
 /* Autor: Alexandre N. de Medeiros        RA115966               */
-/* Disciplina: MC602                      Turma E                */
+/* Disciplina: MC202                      Turma E                */
 /* Data: 28/sep/2011                                             */
 /* Revisado: 09/out/2012                                         */
 

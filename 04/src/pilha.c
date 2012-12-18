@@ -1,6 +1,6 @@
 /* Programa: pilha.c (Calculadora de polinômios)       */
 /* Autor: Alexandre N. de Medeiros        RA115966     */
-/* Disciplina: MC602                      Turma E      */
+/* Disciplina: MC202                      Turma E      */
 /* Data: 29/ago/2011                                   */
 /* Revisado: 16/set/2012                               */
 

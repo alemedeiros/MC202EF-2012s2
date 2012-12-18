@@ -1,6 +1,6 @@
 /* Programa: analisador.c (Análise sintática e árvores)*/
 /* Autor: Alexandre N. de Medeiros        RA115966     */
-/* Disciplina: MC602                      Turma E      */
+/* Disciplina: MC202                      Turma E      */
 /* Data: 20/sep/2011                                   */
 /* Revisado: 06/out/2012                               */
 
