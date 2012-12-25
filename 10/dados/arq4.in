@@ -1,0 +1,21 @@
+# Teste 4
+z A                            A <- 0
+a A 1.0 4 3 3                  A <- x^4y^3z^3
+a A -1.0 4 2 3                 A <- -x^4y^2z^3
+a A 4.0 1 3 2                  A <- A + 4xy^3z^2
+a A -3.0 1 3 2                 A <- A - 3xy^3z^2
+a A 1.0 4 4 1                  A <- A + x^4y^4z
+a A 1.0 2 0 1                  A <- A + x^2z
+a A -6.0 3 4 1                 A <- A - 6x^3y^4z
+a A 2.0 0 1 1                  A <- A + 2yz
+a A 1.0 1 0 0                  A <- A + x
+a A 3.0 0 0 0                  A <- A + 3
+i A                            imprime A
+z B                            B <- 0
+a B 1.0 2 0 0                  B <- x^2 
+m B A B                        B <- A * B
+i B                            imprime B
+l A                            libera A
+l B                            libera B
+x
+

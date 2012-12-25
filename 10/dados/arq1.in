@@ -1,0 +1,15 @@
+# Teste 1
+z A                            A <- 0
+a A 1.0 10 3 2                 A <- x^10y^3z^2
+a A 2.0 8 3 2                  A <- A + 2x^8y^3z^2
+a A 3.0 8 2 2                  A <- A + 3x^8y^2z^2
+a A 1.0 4 4 1                  A <- A + x^4y^4z
+a A -6.0 3 4 1                 A <- A - 6x^3y^4z
+a A 2.0 0 1 1                  A <- A + 2yz
+i A                            imprime A
+c B A                          B <- A
+i B                            imprime B
+l A                            libera A
+l B                            libera B
+x
+
