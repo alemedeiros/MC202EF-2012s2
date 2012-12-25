@@ -1,0 +1,44 @@
+# Testes simples com três elementos
+i 033799 Maria da Silva
+i 031780 João de Souza
+i 034144 José de Morais
+p
+a
+b
+d
+l
+i 031780 João de Souza
+i 033799 Maria da Silva
+i 034144 José de Morais
+p 
+a
+b
+d
+l
+i 031780 João de Souza
+i 034144 José de Morais
+i 033799 Maria da Silva
+p
+a
+b
+d
+l
+i 032210 Helena de Almeida
+i 031780 João de Souza
+i 013627 Marcos Pereira
+p
+a
+b
+d
+l
+i 032210 Helena de Almeida
+i 013627 Marcos Pereira
+i 031780 João de Souza
+p
+a
+b
+n
+m
+d
+l
+x
