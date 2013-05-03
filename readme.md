@@ -17,5 +17,5 @@ Os diretórios estão estruturados da seguinte maneira:
 * * *
 Todas as soluções foram elaboradas por alexandre medeiros.
 
-Evite problemas por plágio em MC202, utilize os códigos deste repositório para
-estudo apenas.
+Evite problemas por plágio em MC202, utilize os códigos deste repositório
+*apenas* para estudo.
