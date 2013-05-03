@@ -1,9 +1,10 @@
-MC202EF 2012s2
-==============
+#MC202 2012s2
 
-Neste repositório liberarei minhas soluções para as tarefas de MC202EF do segundo semestre de 2012.
+Neste repositório liberarei minhas soluções para as tarefas de MC202EF do
+segundo semestre de 2012.
 
-Estou liberando as soluções para ajudar nos estudos dos alunos da turma.
+A motivação deste repositório é para auxiliar nos estudos dos alunos dessa
+disciplina.
 
 ####Estruturação dos diretórios
 Os diretórios estão estruturados da seguinte maneira:
@@ -16,4 +17,5 @@ Os diretórios estão estruturados da seguinte maneira:
 * * *
 Todas as soluções foram elaboradas por alexandre medeiros.
 
-Evite problemas por plágio em MC202, utilize os códigos deste repositório para estudo apenas.
+Evite problemas por plágio em MC202, utilize os códigos deste repositório para
+estudo apenas.
