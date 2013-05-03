@@ -1,4 +1,4 @@
-#MC202 2012s2
+#mc202ef 2012s2 labs
 
 Neste repositório liberarei minhas soluções para as tarefas de MC202EF do
 segundo semestre de 2012.
